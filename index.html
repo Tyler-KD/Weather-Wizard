@@ -14,70 +14,72 @@
     <title>Weather Wizard</title>
 </head>
 
-<header>
-    <!-- Title of Webpage -->
-    <h1>Weather Wizard</h1>
-</header>
-
 <body>
-    <main>
-        <section class = "card card-rounded col-3 bg-white">
-            <h2>Search for a City:</h2>
-            <div class = "text-center pt-4">
-                <textarea class = "col-3 col-md-10 search"></textarea>
-                <button class = "btn btn-danger" id = "fetch-button"> 
-                    Search
-                </button>
+    <header>
+        <!-- Title of Webpage -->
+        <h1>Weather Wizard</h1>
+    </header>
+
+    <main class = "container col">
+        <section class="primary-container col-12">
+            <!-- Search Cities -->
+            <div class="row search-container">
+                <form class="col-sm-3 card-body">
+
+                    <div class="col-md-3 city-text-div">
+                        <label type="text" for="inputCity" class="city-label-text">Search for a City:</label>
+                        <input class="input-value" id="inputCity" type="text"/>
+                    </div>
+
+                    <div class="col-12">
+                        <button type="submit" class="btn" value="submit" placeholder="Search for a city">Search</button>
+                    </div>
+                </form>
+
+                <div class="card">
+                    <h2 class="card-header">Recent Cities</h2>
+                    <div id="city-buttons" class="card-body">
+                        <ul id="recentSearchHistory"></ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Weather -->
+            <div class="col-10 results">
+                <h3 class="subtitle">Weather Forecast: <span id="repo-search-term"></span>
+                </h3>
+                <div id="weather-results-container" class="weather-results-list-group">
+                    <div id="city" class="row cityDiv"></div>
+                    <div id="weather-conditions-icon" class="row cityDiv"></div>
+                    <div id="temp" class="row cityDiv"></div>
+                    <div id="wind" class="row cityDiv"></div>
+                    <div id="humidity" class="row cityDiv"></div>
+                </div>
+
+                <!-- 5-Day Forcast -->
+                <div class="row">
+                    <div id="day-1" class="col fiveDayForecast">
+                        <div class="weather-icon"></div>
+                    </div>
+                    <div id="day-2" class="col fiveDayForecast">
+                        <div class="weather-icon"></div>
+                    </div>
+                    <div id="day-3" class="col fiveDayForecast">
+                        <div class="weather-icon"></div>
+                    </div>
+                    <div id="day-4" class="col fiveDayForecast">
+                        <div class="weather-icon"></div>
+                    </div>
+                    <div id="day-5" class="col fiveDayForecast">
+                        <div class="weather-icon"></div>
+                    </div>
+                </div>
             </div>
         </section>
-
-
-        <section class = "card card-rounded col-3 bg-white">
-            <h3>Current Weather</h3>
-            <div class = "text-center col-8 mb-3 pt-4">
-                <ul class = "col-8 mb-3 Current Weather" >
-    
-                </ul>
-    
-            </div>
-
-        </section>
-
-        <section class = "card card-rounded col-3 bg-white">
-            <h4>Five Day Forcast:</h4>
-            <div class = "text-center col-8 mb-3 pt-4">
-                <ul class = "col-8 mb-3" >
-    
-                </ul>
-            </div>
-            <div class = "text-center col-8 mb-3 pt-4">
-                <ul class = "col-8 mb-3" >
-    
-                </ul>
-            </div>
-            <div class = "text-center col-8 mb-3 pt-4">
-                <ul class = "col-8 mb-3" >
-    
-                </ul>
-            </div>
-            <div class = "text-center col-8 mb-3 pt-4">
-                <ul class = "col-8 mb-3" >
-    
-                </ul>
-            </div>
-            <div class = "text-center col-8 mb-3 pt-4">
-                <ul class = "col-8 mb-3" >
-    
-                </ul>
-            </div>
-        </section>
-
     </main>
+
     <!-- Link to jQuery library -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <!-- Link to day.JS library -->
-    <script src="https://cdn.jsdelivr.net/npm/dayjs@1.11.3/dayjs.min.js"
-        integrity="sha256-iu/zLUB+QgISXBLCW/mcDi/rnf4m4uEDO0wauy76x7U=" crossorigin="anonymous"></script>
     <!-- Relative link to JS file -->
     <script src="./assets/script.js"></script>
 </body>

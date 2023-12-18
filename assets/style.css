@@ -1,0 +1,153 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    color: rgb(57, 41, 20);
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 50px;
+    padding: 50px;
+    width: 100%;
+}
+
+.primary-container {
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    width: 100%;
+    border-radius: 7px;
+    height: auto;
+    background-color: azure;
+    opacity: 60%;
+    border: solid 45px azure;
+}
+
+.search-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.city-text-div {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;    
+    padding: 15px;
+}
+
+.city-label-text {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    margin: 5px;
+    padding: 15px;    
+}
+
+.card {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    background-color: azure;
+    border: none;
+    width: 100%;
+}
+
+.card-header {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    border: none;
+    background-color: azure;
+}
+
+.card-body {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: flex-start;
+    background-color: azure;
+    padding: 0;
+}
+
+ul {
+    list-style: none;
+}
+
+#recentSearchHistory {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.row {
+    padding: 0 30px 0 30px;
+}
+
+.results {
+    border: solid rgb(218, 170, 107) 3px;
+    padding: 20px;
+    border-radius: 7px;
+}
+
+.cityDiv {
+    align-items: flex-start;
+    padding: 5px 15px 1px 15px;
+    font-size: 25px;
+}
+
+.fiveDayForecast {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 350px;
+    background-color: rgb(167, 138, 96);
+    border: solid 7px rgb(242, 224, 200);
+    text-align: center;
+    font-size: 14px;
+    font-weight: bold;
+    text-transform: capitalize;
+}
+
+.subtitle {
+    color: rgb(58, 43, 13)
+}
+
+.btn {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    color: azure;
+    margin-top: 8em;
+    width: 9em;
+    background-color: rgb(108, 96, 25);
+    outline: none;
+    border: none;
+}
+
+.btn:hover {
+    background-color: rgb(57, 41, 18);
+    cursor: pointer;
+    color: rgb(218, 170, 107);
+    opacity: 50%;
+    transition: transform 150ms;
+    transform: scale(1.03);
+}
+
+
