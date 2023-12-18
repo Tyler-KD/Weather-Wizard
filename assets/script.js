@@ -5,7 +5,8 @@ var apiKey = "bf2f5ecc787085a6aa0763fa9d92df94";
 var searchButton = $(".btn");
 var inputCityEl = document.getElementById("inputCity");
 var fiveDayForecastEl = $(".fiveDayForecast");
-var weatherIconEl = $(".weather-icon");
+var fiveDayWeatherIconEl = $(".weather-icon");
+var currentWeatherIconEl = $(".currentWeatherIcon");
 var citySearchEl = document.getElementById("citySearch");
 var recentlySearchedCities = [];
 var recentSearchHistoryEl = $("#recentSearchHistory")
@@ -28,7 +29,15 @@ function getWeather () {
         // $("#city").text(
         // `City: ${data.main.name} (${moment().format("M/D/YYYY")})`);
         $("#city").text(`${data.name}`);
-        $("#weather-conditions-icon").text(`${data.weather[0].icon}`);
+
+        var currentWeatherIconEl = document.createElement("img");
+        currentWeatherIconEl.setAttribute("src", `https://openweathermap.org/img/wn/${data.weather[0].icon}.png`);
+        currentWeatherIconEl.setAttribute("alt", `Weather Icon`);
+        currentWeatherIconEl.setAttribute("class", "currentWeatherIcon");
+        currentWeatherIconEl.setAttribute("width", "100");
+        currentWeatherIconEl.setAttribute("height", "100");
+        $("#weather-conditions-icon").empty().append(currentWeatherIconEl);
+
         $("#temp").text(`Temp: ${data.main.temp} ºF`);
         $("#humidity").text(`Humidity: ${data.main.humidity} %`);
         $("#wind").text(`Wind: ${data.wind.speed} mph`);
@@ -39,3 +48,14 @@ citySearchEl.addEventListener("click", (event) => {
     event.preventDefault();
     getWeather();
 });
+
+// function getFiveDay () {
+//     city = fiveDayForecastEl;
+//     fetch(`https://api.openweathermap.org/data/2.5/forecast?q=${city}&units=imperial&appid=${apiKey}`)
+//     .then(function (res){
+//         return res.json();
+//     })
+//     console.log("data", forecastDate);
+// }
+
+// getFiveDay();
