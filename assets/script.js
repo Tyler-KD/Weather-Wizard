@@ -13,7 +13,7 @@ var recentSearchHistoryEl = $("#recentSearchHistory")
 function getWeather () {
     city = inputCityEl.value;
     fetch(
-        `https://api.openweathermap.org/geo/1.0/direct?q=${city}&limit=5&appid=${apiKey}`
+        `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=imperial&appid=${apiKey}`
     )
     .then(function (res) {
         return res.json();
@@ -26,3 +26,17 @@ citySearchEl.addEventListener("click", (event) => {
     event.preventDefault();
     getWeather();
 });
+
+function getWeatherData(city) {
+    getApi(city).then(function (data) {
+      console.log(data);
+  
+      // current city weather data
+      $("#city").text(
+        `City: ${weather.main.name} (${moment().format("M/D/YYYY")})`
+      );
+      $("#temp").text(`Temp: ${weather.main.temp} ºF`);
+      $("#wind").text(`Wind: ${weather.main.speed} mph`);
+      $("#humidity").text(`Humidity: ${weather.main.humidity} %`);})}
+
+      getWeatherData()
