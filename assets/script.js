@@ -9,6 +9,3 @@ var weatherIconEl = $(".weather-icon");
 
 var recentlySearchedCities = [];
 var recentSearchHistoryEl = $("#recentSearchHistory")
-
-
-
