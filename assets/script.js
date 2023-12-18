@@ -3,13 +3,20 @@ console.log("This is working!")
 var apiKey = "bf2f5ecc787085a6aa0763fa9d92df94";
 
 var searchButton = $(".btn");
-var inputCityEl = document.getElementById("inputCity");
+var inputCityEl = document.querySelector("#inputCity");
 var fiveDayForecastEl = $(".fiveDayForecast");
 var fiveDayWeatherIconEl = $(".weather-icon");
 var currentWeatherIconEl = $(".currentWeatherIcon");
 var citySearchEl = document.getElementById("citySearch");
 var recentlySearchedCities = [];
 var recentSearchHistoryEl = $("#recentSearchHistory")
+
+var SearchedGet = localStorage.getItem("City Name");
+if (SearchedGet !== null) {
+    recentlySearchedCities = JSON.parse(SearchedGet);
+    console.log(recentlySearchedCities);
+}
+displaySearchedCities();
 
 function getWeather () {
     city = inputCityEl.value;
@@ -21,7 +28,7 @@ function getWeather () {
     })
     .then(function (data) {
         console.log("name", data.name);
-        console.log("weather", data.weather[0]);
+        // console.log("weather", data.weather[0]);
         console.log("icon", data.weather[0].icon);
         console.log("temp", data.main.temp);
         console.log("wind speed", data.wind.speed);
@@ -41,13 +48,50 @@ function getWeather () {
         $("#temp").text(`Temp: ${data.main.temp} ºF`);
         $("#humidity").text(`Humidity: ${data.main.humidity} %`);
         $("#wind").text(`Wind: ${data.wind.speed} mph`);
-        
+
+            recentlySearchedCities.push(city);
+            count = 0;
+            // if array is too long, cut it down if higher than specifized number, splice method
+            localStorage.setItem("City Name", JSON.stringify(recentlySearchedCities));        
     })
 }
 citySearchEl.addEventListener("click", (event) => {
     event.preventDefault();
     getWeather();
 });
+
+function displaySearchedCities () {
+    recentSearchHistoryEl.empty();
+    for (var i = 0; i < recentlySearchedCities.length; i++) {
+        var listBtn = $(`
+        <li>
+        <button type="button" data-city="new-york" class="btnCity";>
+        ${recentlySearchedCities[i]}
+        </button>
+        </li>`);
+        recentSearchHistoryEl.append(listBtn);
+
+        if (recentlySearchedCities.length > 10) {
+            recentlySearchedCities.splice(i, 1);
+        }        
+    }
+}
+
+recentSearchHistoryEl.on("click", "button", function() {
+    console.log($(this).text());
+    var city = $(this).text();
+    getWeather(city);
+});
+
+// searchButton.on("click", function (event) {
+//     event.preventDefault();
+//     getWeather(inputCityEl);
+//     // check for repeat
+//     recentlySearchedCities.push(inputCityEl.val());
+//     count = 0;
+//     // if array is too long, cut it down if higher than specifized number, splice method
+//     localStorage.setItem("City Name", JSON.stringify(recentlySearchedCities));
+//   });
 
 // function getFiveDay () {
 //     city = fiveDayForecastEl;
@@ -59,3 +103,9 @@ citySearchEl.addEventListener("click", (event) => {
 // }
 
 // getFiveDay();
+
+// recentSearchHistoryEl.on("click", "button", function () {
+//     console.log($(this).text());
+//     var cityName = $(this).text();
+//     getWeather(cityName);
+//   });
