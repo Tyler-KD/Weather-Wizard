@@ -19,24 +19,23 @@ function getWeather () {
         return res.json();
     })
     .then(function (data) {
-        console.log(data);
+        console.log("name", data.name);
+        console.log("weather", data.weather[0]);
+        console.log("icon", data.weather[0].icon);
+        console.log("temp", data.main.temp);
+        console.log("wind speed", data.wind.speed);
+        console.log("humidity", data.main.humidity);
+        // $("#city").text(
+        // `City: ${data.main.name} (${moment().format("M/D/YYYY")})`);
+        $("#city").text(`${data.name}`);
+        $("#weather-conditions-icon").text(`${data.weather[0].icon}`);
+        $("#temp").text(`Temp: ${data.main.temp} ºF`);
+        $("#humidity").text(`Humidity: ${data.main.humidity} %`);
+        $("#wind").text(`Wind: ${data.wind.speed} mph`);
+        
     })
 }
 citySearchEl.addEventListener("click", (event) => {
     event.preventDefault();
     getWeather();
 });
-
-function getWeatherData(city) {
-    getApi(city).then(function (data) {
-      console.log(data);
-  
-      // current city weather data
-      $("#city").text(
-        `City: ${weather.main.name} (${moment().format("M/D/YYYY")})`
-      );
-      $("#temp").text(`Temp: ${weather.main.temp} ºF`);
-      $("#wind").text(`Wind: ${weather.main.speed} mph`);
-      $("#humidity").text(`Humidity: ${weather.main.humidity} %`);})}
-
-      getWeatherData()
