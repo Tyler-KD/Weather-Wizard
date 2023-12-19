@@ -70,6 +70,43 @@ citySearchEl.addEventListener("click", (event) => {
     getWeather();
 });
 
+function get5Day(city) {
+    city = (city || inputCityEl.value).trim();
+    fetch(
+        `https://api.openweathermap.org/data/2.5/forecast?q=${city}&units=imperial&appid=${apiKey}`
+    )
+        .then(function (res) {
+            return res.json();
+        })
+        .then(function (data) {
+            fiveDayForecastEl.each((index, element) => {
+                element = $(element);
+                index = index;
+
+                element.empty();
+
+                var dateDiv = $("<div>");
+                dateDiv.text(`Date: ${moment().add(index, "days").format("M/D/YYYY")}`);
+                element.append(dateDiv);
+
+                var tempDiv = $("<div>");
+                tempDiv.text(`Temp: ${data.forecastData.list[index].main.temp} ºF`);
+                element.append(tempDiv);
+
+                var windDiv = $("<div>");
+                windDiv.text(`Wind: ${data.forecastData.list[index].wind.speed} Mph`);
+                element.append(windDiv);
+
+                var humidityDiv = $("<div>");
+                humidityDiv.text(`Humidity: ${data.forecastData.list[index].main.humidity} %`);
+                element.append(humidityDiv);
+            }
+            )
+
+            }
+        )}
+    
+
 function displaySearchedCities() {
     recentSearchHistoryEl.empty();
     for (var i = 0; i < recentlySearchedCities.length; i++) {
