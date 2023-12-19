@@ -56,6 +56,8 @@ function getWeather (city) {
             count = 0;
             // if array is too long, cut it down if higher than specifized number, splice method
             localStorage.setItem("City Name", JSON.stringify(recentlySearchedCities));
+            // SearchedGet = JSON.parse(localStorage.getItem('scores')) || [];
+            displaySearchedCities();
         }else {
             console.error("Invalid data received from the API");
         }        
