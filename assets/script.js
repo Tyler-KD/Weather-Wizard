@@ -18,8 +18,8 @@ if (SearchedGet !== null) {
 }
 displaySearchedCities();
 
-function getWeather () {
-    city = inputCityEl.value;
+function getWeather (city) {
+    city = (city || inputCityEl.value).trim();
     fetch(
         `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=imperial&appid=${apiKey}`
     )
@@ -27,6 +27,9 @@ function getWeather () {
         return res.json();
     })
     .then(function (data) {
+        if (data && data.name && data.weather[0].icon && data.main.temp && data.wind.speed && data.main.humidity) {
+
+        
         console.log("name", data.name);
         // console.log("weather", data.weather[0]);
         console.log("icon", data.weather[0].icon);
@@ -48,11 +51,14 @@ function getWeather () {
         $("#temp").text(`Temp: ${data.main.temp} ºF`);
         $("#humidity").text(`Humidity: ${data.main.humidity} %`);
         $("#wind").text(`Wind: ${data.wind.speed} mph`);
-
+        
             recentlySearchedCities.push(city);
             count = 0;
             // if array is too long, cut it down if higher than specifized number, splice method
-            localStorage.setItem("City Name", JSON.stringify(recentlySearchedCities));        
+            localStorage.setItem("City Name", JSON.stringify(recentlySearchedCities));
+        }else {
+            console.error("Invalid data received from the API");
+        }        
     })
 }
 citySearchEl.addEventListener("click", (event) => {
