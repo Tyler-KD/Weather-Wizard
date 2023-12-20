@@ -79,14 +79,14 @@ function get5Day(city) {
             return res.json();
         })
         .then(function (data) {
-            fiveDayForecastEl.each((index, element) => {
-                element = $(element);
-                index = index;
-
-                element.empty();
+            console.log(data)
+            for (let i = 0; i < fiveDayForecastEl.length; i++) {
+                console.log(data.list[i*=8])
+                console.log(fiveDayForecastEl[i])
+                // element.empty();
 
                 var dateDiv = $("<div>");
-                dateDiv.text(`Date: ${moment().add(index, "days").format("M/D/YYYY")}`);
+                dateDiv.text(`Date: ${this().add(index, "days").format("M/D/YYYY")}`);
                 element.append(dateDiv);
 
                 var tempDiv = $("<div>");
@@ -101,10 +101,15 @@ function get5Day(city) {
                 humidityDiv.text(`Humidity: ${data.forecastData.list[index].main.humidity} %`);
                 element.append(humidityDiv);
             }
+            
+
+
+            }
             )
 
             }
-        )}
+        
+    get5Day("Houston");
     
 
 function displaySearchedCities() {
