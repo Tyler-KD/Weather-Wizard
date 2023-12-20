@@ -5,7 +5,7 @@ var apiKey = "bf2f5ecc787085a6aa0763fa9d92df94";
 var searchButton = $(".btn");
 var inputCityEl = document.querySelector("#inputCity");
 var fiveDayForecastEl = $(".fiveDayForecast");
-var fiveDayWeatherIconEl = $(".weather-icon");
+var fiveDayWeatherIconEl = $("5DayIcon");
 var currentWeatherIconEl = $(".currentWeatherIcon");
 var citySearchEl = document.getElementById("citySearch");
 var recentlySearchedCities = [];
@@ -30,8 +30,8 @@ function getWeather(city) {
             if (data && data.name && data.weather[0].icon && data.main.temp && data.wind.speed && data.main.humidity) {
 
 
-                console.log("name", data.name);
-                // console.log("weather", data.weather[0]);
+                console.log("name", data.name);                
+                console.log("date", data.dt);
                 console.log("icon", data.weather[0].icon);
                 console.log("temp", data.main.temp);
                 console.log("wind speed", data.wind.speed);
@@ -39,6 +39,7 @@ function getWeather(city) {
                 // $("#city").text(
                 // `City: ${data.main.name} (${moment().format("M/D/YYYY")})`);
                 $("#city").text(`${data.name}`);
+                $("#date").text(`${data.dt}`);
 
                 var currentWeatherIconEl = document.createElement("img");
                 currentWeatherIconEl.setAttribute("src", `https://openweathermap.org/img/wn/${data.weather[0].icon}.png`);
@@ -57,8 +58,7 @@ function getWeather(city) {
                 }
                 count = 0;
                 // if array is too long, cut it down if higher than specifized number, splice method
-                localStorage.setItem("City Name", JSON.stringify(recentlySearchedCities));
-                // SearchedGet = JSON.parse(localStorage.getItem('scores')) || [];
+                localStorage.setItem("City Name", JSON.stringify(recentlySearchedCities));                
                 displaySearchedCities();
             } else {
                 console.error("Invalid data received from the API");
@@ -68,28 +68,19 @@ function getWeather(city) {
 citySearchEl.addEventListener("click", (event) => {
     event.preventDefault();
     getWeather();
+    get5Day();
 });
 
 function generateCard(apiData) {
-    for (let i = 0; i <= 5; i = i++) {
-        for (let j = 0; j < apiData.length; j = j + 8) {
-            // var k = 0;
-            // console.log(data.list[i*=8])
-            // console.log(fiveDayForecastEl[i])
-            // element.empty();
-            console.log("day-${i}: ", `day-${i}`);
-            var day1Card = document.getElementById(`day-${i}`);
-            console.log(dateDiv)
-            // console.log(k)
-            console.log(apiData[j].dt_txt)
-            day1Card.innerHTML = apiData[j].dt_txt
+    var index = 0
+    for (let j = 0; j < apiData.length; j = j + 8) {
 
-            // var tempDiv = document.getElementById("day-1");
-            day1Card.innerHTML = (`Temp: ${apiData[j].main.temp} ºF`);
-            day1Card.innerHTML = document.createElement("p");
-            fiveDayForecastEl.append(day1Card.innerHTML);
-        }
-        
+        $(`#day-${index}-date`).text(`Date: ${apiData[j].dt_txt}`)
+        $(`#day-${index}-temp`).text(`Temp: ${apiData[j].main.temp} ºF`);
+        $(`#day-${index}-wind`).text(`Wind: ${apiData[j].wind.speed} mph`);
+        $(`#day-${index}-humidity`).text(`Humidity: ${apiData[j].main.humidity} %`);
+
+        index += 1
     }
 }
 
@@ -103,35 +94,10 @@ function get5Day(city) {
         })
         .then(function (data) {
             console.log(data)
-           
-                generateCard(data.list);
-            
+            generateCard(data.list);
+        })
+};
 
-                // var dateDiv = $("<div>");
-                // dateDiv.text(`Date: ${this().add(index, "days").format("M/D/YYYY")}`);
-                // element.append(dateDiv);
-
-                // var tempDiv = $("<div>");
-                // tempDiv.text(`Temp: ${data.forecastData.list[index].main.temp} ºF`);
-                // element.append(tempDiv);
-
-                // var windDiv = $("<div>");
-                // windDiv.text(`Wind: ${data.forecastData.list[index].wind.speed} Mph`);
-                // element.append(windDiv);
-
-                // var humidityDiv = $("<div>");
-                // humidityDiv.text(`Humidity: ${data.forecastData.list[index].main.humidity} %`);
-                // element.append(humidityDiv);
-            
-
-
-            }
-            )
-
-            }
-        
-    get5Day("Houston");
-    
 
 function displaySearchedCities() {
     recentSearchHistoryEl.empty();
@@ -154,4 +120,5 @@ recentSearchHistoryEl.on("click", "button", function () {
     console.log($(this).text());
     var city = $(this).text();
     getWeather(city);
+    get5Day(city);
 });
