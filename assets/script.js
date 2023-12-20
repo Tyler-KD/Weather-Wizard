@@ -70,6 +70,29 @@ citySearchEl.addEventListener("click", (event) => {
     getWeather();
 });
 
+function generateCard(apiData) {
+    for (let i = 0; i <= 5; i = i++) {
+        for (let j = 0; j < apiData.length; j = j + 8) {
+            // var k = 0;
+            // console.log(data.list[i*=8])
+            // console.log(fiveDayForecastEl[i])
+            // element.empty();
+            console.log("day-${i}: ", `day-${i}`);
+            var day1Card = document.getElementById(`day-${i}`);
+            console.log(dateDiv)
+            // console.log(k)
+            console.log(apiData[j].dt_txt)
+            day1Card.innerHTML = apiData[j].dt_txt
+
+            // var tempDiv = document.getElementById("day-1");
+            day1Card.innerHTML = (`Temp: ${apiData[j].main.temp} ºF`);
+            day1Card.innerHTML = document.createElement("p");
+            fiveDayForecastEl.append(day1Card.innerHTML);
+        }
+        
+    }
+}
+
 function get5Day(city) {
     city = (city || inputCityEl.value).trim();
     fetch(
@@ -80,21 +103,8 @@ function get5Day(city) {
         })
         .then(function (data) {
             console.log(data)
-            for (let i = 0; i < data.list.length; i = i + 8) {
-                // var k = 0;
-                // console.log(data.list[i*=8])
-                // console.log(fiveDayForecastEl[i])
-                // element.empty();
-
-                var dateDiv = document.getElementById("day-1");
-                console.log(dateDiv)
-                // console.log(k)
-                console.log(data.list[i].dt_txt)
-                dateDiv.innerHTML = data.list[i].dt_txt
-
-                var tempDiv = document.getElementById("day-1");
-                tempDiv.innerHTML = (`Temp: ${data.list[i].main.temp} ºF`);
-                
+           
+                generateCard(data.list);
             
 
                 // var dateDiv = $("<div>");
@@ -112,7 +122,6 @@ function get5Day(city) {
                 // var humidityDiv = $("<div>");
                 // humidityDiv.text(`Humidity: ${data.forecastData.list[index].main.humidity} %`);
                 // element.append(humidityDiv);
-            }
             
 
 
