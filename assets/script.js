@@ -73,16 +73,14 @@ citySearchEl.addEventListener("click", (event) => {
 
 function generateCard(apiData) {
     var index = 0
-    for (let j = 0; j < apiData.length; j = j + 8) {
+    for (let j = 1; j < apiData.length; j = j + 8) {
 
         $(`#day-${index}-date`).text(`Date: ${apiData[j].dt_txt}`)
-        // var fiveDayWeatherIconEl = document.createElement("img");
-        // fiveDayWeatherIconEl.setAttribute("src", `https://openweathermap.org/img/wn/${data.weather[0].icon}.png`);
-        // fiveDayWeatherIconEl.setAttribute("alt", `Weather Icon`);
-        // fiveDayWeatherIconEl.setAttribute("class", "5DayIcon");
-        // fiveDayWeatherIconEl.setAttribute("width", "100");
-        // fiveDayWeatherIconEl.setAttribute("height", "100");
-        // $(`#day-${index}-icon`).empty().append(fiveDayWeatherIconEl);
+        var FiveiconEl = document.createElement("img");
+        var FiveiconCode = (`${apiData[j].weather[0].icon}`);
+        var FiveiconUrl = ("https://openweathermap.org/img/wn/" + FiveiconCode + ".png");
+        FiveiconEl.setAttribute("src", FiveiconUrl);
+        $(`#day-${index}-icon`).empty().append(FiveiconEl);
         $(`#day-${index}-temp`).text(`Temp: ${apiData[j].main.temp} ºF`);
         $(`#day-${index}-wind`).text(`Wind: ${apiData[j].wind.speed} mph`);
         $(`#day-${index}-humidity`).text(`Humidity: ${apiData[j].main.humidity} %`);
