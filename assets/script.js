@@ -75,7 +75,7 @@ function generateCard(apiData) {
     var index = 0
     for (let j = 1; j < apiData.length; j = j + 8) {
 
-        $(`#day-${index}-date`).text(`Date: ${apiData[j].dt_txt}`)
+        $(`#day-${index}-date`).text(`Date: ${moment().add(index + 1, "days").format("L")}`);
         var FiveiconEl = document.createElement("img");
         var FiveiconCode = (`${apiData[j].weather[0].icon}`);
         var FiveiconUrl = ("https://openweathermap.org/img/wn/" + FiveiconCode + ".png");
