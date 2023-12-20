@@ -30,7 +30,7 @@ function getWeather(city) {
             if (data && data.name && data.weather[0].icon && data.main.temp && data.wind.speed && data.main.humidity) {
 
 
-                console.log("name", data.name);                
+                console.log("name", data.name);
                 console.log("date", data.dt);
                 console.log("icon", data.weather[0].icon);
                 console.log("temp", data.main.temp);
@@ -58,7 +58,7 @@ function getWeather(city) {
                 }
                 count = 0;
                 // if array is too long, cut it down if higher than specifized number, splice method
-                localStorage.setItem("City Name", JSON.stringify(recentlySearchedCities));                
+                localStorage.setItem("City Name", JSON.stringify(recentlySearchedCities));
                 displaySearchedCities();
             } else {
                 console.error("Invalid data received from the API");
@@ -76,6 +76,13 @@ function generateCard(apiData) {
     for (let j = 0; j < apiData.length; j = j + 8) {
 
         $(`#day-${index}-date`).text(`Date: ${apiData[j].dt_txt}`)
+        // var fiveDayWeatherIconEl = document.createElement("img");
+        // fiveDayWeatherIconEl.setAttribute("src", `https://openweathermap.org/img/wn/${data.weather[0].icon}.png`);
+        // fiveDayWeatherIconEl.setAttribute("alt", `Weather Icon`);
+        // fiveDayWeatherIconEl.setAttribute("class", "5DayIcon");
+        // fiveDayWeatherIconEl.setAttribute("width", "100");
+        // fiveDayWeatherIconEl.setAttribute("height", "100");
+        // $(`#day-${index}-icon`).empty().append(fiveDayWeatherIconEl);
         $(`#day-${index}-temp`).text(`Temp: ${apiData[j].main.temp} ºF`);
         $(`#day-${index}-wind`).text(`Wind: ${apiData[j].wind.speed} mph`);
         $(`#day-${index}-humidity`).text(`Humidity: ${apiData[j].main.humidity} %`);
