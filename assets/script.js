@@ -80,26 +80,38 @@ function get5Day(city) {
         })
         .then(function (data) {
             console.log(data)
-            for (let i = 0; i < fiveDayForecastEl.length; i++) {
-                console.log(data.list[i*=8])
-                console.log(fiveDayForecastEl[i])
+            for (let i = 0; i < data.list.length; i = i + 8) {
+                // var k = 0;
+                // console.log(data.list[i*=8])
+                // console.log(fiveDayForecastEl[i])
                 // element.empty();
 
-                var dateDiv = $("<div>");
-                dateDiv.text(`Date: ${this().add(index, "days").format("M/D/YYYY")}`);
-                element.append(dateDiv);
+                var dateDiv = document.getElementById("day-1");
+                console.log(dateDiv)
+                // console.log(k)
+                console.log(data.list[i].dt_txt)
+                dateDiv.innerHTML = data.list[i].dt_txt
 
-                var tempDiv = $("<div>");
-                tempDiv.text(`Temp: ${data.forecastData.list[index].main.temp} ºF`);
-                element.append(tempDiv);
+                var tempDiv = document.getElementById("day-1");
+                tempDiv.innerHTML = (`Temp: ${data.list[i].main.temp} ºF`);
+                
+            
 
-                var windDiv = $("<div>");
-                windDiv.text(`Wind: ${data.forecastData.list[index].wind.speed} Mph`);
-                element.append(windDiv);
+                // var dateDiv = $("<div>");
+                // dateDiv.text(`Date: ${this().add(index, "days").format("M/D/YYYY")}`);
+                // element.append(dateDiv);
 
-                var humidityDiv = $("<div>");
-                humidityDiv.text(`Humidity: ${data.forecastData.list[index].main.humidity} %`);
-                element.append(humidityDiv);
+                // var tempDiv = $("<div>");
+                // tempDiv.text(`Temp: ${data.forecastData.list[index].main.temp} ºF`);
+                // element.append(tempDiv);
+
+                // var windDiv = $("<div>");
+                // windDiv.text(`Wind: ${data.forecastData.list[index].wind.speed} Mph`);
+                // element.append(windDiv);
+
+                // var humidityDiv = $("<div>");
+                // humidityDiv.text(`Humidity: ${data.forecastData.list[index].main.humidity} %`);
+                // element.append(humidityDiv);
             }
             
 
@@ -134,30 +146,3 @@ recentSearchHistoryEl.on("click", "button", function () {
     var city = $(this).text();
     getWeather(city);
 });
-
-// searchButton.on("click", function (event) {
-//     event.preventDefault();
-//     getWeather(inputCityEl);
-//     // check for repeat
-//     recentlySearchedCities.push(inputCityEl.val());
-//     count = 0;
-//     // if array is too long, cut it down if higher than specifized number, splice method
-//     localStorage.setItem("City Name", JSON.stringify(recentlySearchedCities));
-//   });
-
-// function getFiveDay () {
-//     city = fiveDayForecastEl;
-//     fetch(`https://api.openweathermap.org/data/2.5/forecast?q=${city}&units=imperial&appid=${apiKey}`)
-//     .then(function (res){
-//         return res.json();
-//     })
-//     console.log("data", forecastDate);
-// }
-
-// getFiveDay();
-
-// recentSearchHistoryEl.on("click", "button", function () {
-//     console.log($(this).text());
-//     var cityName = $(this).text();
-//     getWeather(cityName);
-//   });
