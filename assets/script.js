@@ -39,7 +39,7 @@ function getWeather(city) {
                 // $("#city").text(
                 // `City: ${data.main.name} (${moment().format("M/D/YYYY")})`);
                 $("#city").text(`${data.name}`);
-                $("#date").text(`${data.dt}`);
+                $("#date").text(`${moment().format("L")}`);
 
                 var currentWeatherIconEl = document.createElement("img");
                 currentWeatherIconEl.setAttribute("src", `https://openweathermap.org/img/wn/${data.weather[0].icon}.png`);
