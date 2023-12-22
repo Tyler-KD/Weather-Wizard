@@ -26,10 +26,12 @@
         <section class="primary-container col-12">
             <!-- Search Cities -->
             <div class="row search-container" class="search">
-
+                <!-- The form element represents a collection of form-associated elements, 
+                some of which can represent editable values that can be submitted to a server for processing -->
                 <form class="search-form">
                     <div class="col-md-3 city-text-div">
                         <label for="inputCity" class="city-label-text">Search for a City:</label>
+                        <!-- Text input for user to search -->
                         <input class="input-value" id="inputCity" type="text" />
                     </div>
                     <div class="col-12">
@@ -40,12 +42,13 @@
                 <div class="card">
                     <h2 class="card-header">Recent Cities</h2>
                     <div id="city-buttons" class="card-body">
+                        <!-- Recent Cities List and appended buttons -->
                         <ul id="recentSearchHistory"></ul>
                     </div>
                 </div>
             </div>
 
-            <!-- Weather -->
+            <!-- Current Day Forecast -->
             <div class="col-10 results">
                 <h3 class="subtitle">Weather Forecast: <span id="repo-search-term"></span>
                 </h3>
