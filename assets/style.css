@@ -10,9 +10,11 @@ body {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    margin: 50px;
-    padding: 50px;
+    margin: 1em;
     width: 100%;
+    background-image: url(../assets/images/FoggyForest.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 
 .primary-container {
@@ -22,9 +24,9 @@ body {
     width: 100%;
     border-radius: 7px;
     height: auto;
-    background-color: azure;
-    opacity: 60%;
-    border: solid 45px azure;
+    background-color: wheat;
+    opacity: 55%;
+    border: solid 45px wheat;
 }
 
 .search-container {
@@ -59,9 +61,9 @@ body {
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    background-color: azure;
+    background-color: wheat;
     border: none;
-    width: 100%;
+    width: 94%;
 }
 
 .card-header {
@@ -71,7 +73,10 @@ body {
     align-items: center;
     flex-wrap: wrap;
     border: none;
-    background-color: azure;
+    background-color: wheat;
+    color: black;
+    margin-left: 3em;
+    text-align: center;
 }
 
 .card-body {
@@ -79,8 +84,47 @@ body {
     flex-direction: row;
     justify-content: flex-start;
     align-items: flex-start;
-    background-color: azure;
+    background-color: wheat;
     padding: 0;
+}
+
+.btn {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    color: azure;
+    width: 10em;
+    margin-left: 7em;
+    background-color: rgb(108, 96, 25);
+    outline: none;
+    border: none;
+}
+
+.btn:hover {
+    background-color: rgb(57, 41, 18);
+    cursor: pointer;
+    color: rgb(218, 170, 107);
+    opacity: 50%;
+    transition: transform 150ms;
+    transform: scale(1.03);
+}
+
+.btnCity {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    color: wheat;
+    margin: 0.5em;
+    margin-left: 4.6em;
+    padding: 20px;
+    height: 30px;
+    width: 10em;
+    background-color: rgb(108, 96, 25);
+    outline: none;
+    border: none;
+    border-radius: 7%;
 }
 
 ul {
@@ -98,8 +142,12 @@ ul {
     padding: 0 30px 0 30px;
 }
 
+.search {
+    display: flex;
+    
+}
+
 .results {
-    border: solid rgb(218, 170, 107) 3px;
     padding: 20px;
     border-radius: 7px;
 }
@@ -107,7 +155,9 @@ ul {
 .cityDiv {
     align-items: flex-start;
     padding: 5px 15px 1px 15px;
-    font-size: 25px;
+    font-size: 1.1em;
+    color: black;
+    font-weight: bold;
 }
 
 .fiveDayForecast {
@@ -121,7 +171,6 @@ ul {
     border: solid 7px rgb(242, 224, 200);
     text-align: center;
     font-weight: bold;
-    text-transform: capitalize;
 }
 
 .fiveDayForecast::after {
@@ -135,11 +184,10 @@ ul {
     text-align: center;
     font-size: 1em;
     font-weight: bold;
-    text-transform: capitalize;
 }
 
 .subtitle {
-    color: rgb(58, 43, 13)
+    color: black;
 }
 
 .search-form {
@@ -148,27 +196,234 @@ ul {
     align-items: center;
 }
 
-.btn {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    color: azure;
-    /* margin-top: 8em; */
-    width: 9em;
-    margin-left: 7em;
-    background-color: rgb(108, 96, 25);
-    outline: none;
-    border: none;
+@media screen and (max-width: 1400px) {
+    .results {
+        padding: 0%;
+        padding-right: 4em;
+        border-radius: 7px;
+    }
+
+    .card {
+        display: flex;
+        flex-wrap: wrap;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        background-color: wheat;
+        border: none;
+        width: 85%;
+    }
 }
 
-.btn:hover {
-    background-color: rgb(57, 41, 18);
-    cursor: pointer;
-    color: rgb(218, 170, 107);
-    opacity: 50%;
-    transition: transform 150ms;
-    transform: scale(1.03);
+/* Tablets */
+@media screen and (max-width: 992px) {
+
+    body {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        margin: 1em;
+        width: 100%;
+        background-image: url(../assets/images/FoggyForest.jpg);
+        background-repeat: no-repeat;
+        background-size: cover;
+        font-size: 80%;
+    }
+
+    .fiveDayForecast {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        height: 18em;
+        background-color: rgb(167, 138, 96);
+        border: solid 7px rgb(242, 224, 200);
+        text-align: center;
+        font-weight: bold;
+    }
+
+    .search-container {
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-end;
+        align-items: center;
+        flex-wrap: wrap;
+        margin-bottom: 31em;
+    }
+
+    .results {
+        padding: 9%;
+        padding-top: 0%;
+        border-radius: 7px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    .card {
+        display: flex;
+        flex-wrap: wrap;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        background-color: wheat;
+        border: none;
+        width: 82%;
+    }
+
+    .city-text-div {
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-start;
+        align-items: center;    
+        padding: 1px;
+        padding-left: 2em;
+        width: 100%;
+    }
 }
 
+/* Large smartphones */
+@media screen and (max-width: 768px) {
+
+    body {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        margin: 1em;
+        width: 100%;
+        background-image: url(../assets/images/FoggyForest.jpg);
+        background-repeat: no-repeat;
+        background-size: cover;
+        font-size: 81%;
+    }
+
+    .fiveDayForecast {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        height: 18em;
+        background-color: rgb(167, 138, 96);
+        border: solid 7px rgb(242, 224, 200);
+        text-align: center;
+        font-weight: bold;
+    }
+
+    .search-container {
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-end;
+        align-items: center;
+        flex-wrap: wrap;
+        margin-bottom: 61em;
+    }
+
+    .results {
+        padding: 18%;
+        padding-top: 0%;
+        border-radius: 7px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    .card {
+        display: flex;
+        flex-wrap: wrap;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        background-color: wheat;
+        border: none;
+        width: 77%;
+    }
+
+    .city-text-div {
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-start;
+        align-items: center;    
+        padding: 1px;
+        padding-left: 3em;
+        width: 100%;
+    }
+}
+
+/* Small smartphones */
+@media screen and (max-width: 576px) {
+    
+    body {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        margin: 1em;
+        width: 100%;
+        background-image: url(../assets/images/FoggyForest.jpg);
+        background-repeat: no-repeat;
+        background-size: cover;
+        font-size: 71%;
+    }
+
+    .fiveDayForecast {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        height: 18em;
+        background-color: rgb(167, 138, 96);
+        border: solid 7px rgb(242, 224, 200);
+        text-align: center;
+        font-weight: bold;
+    }
+
+    .search-container {
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-end;
+        align-items: center;
+        flex-wrap: wrap;
+        margin-bottom: 61em;
+    }
+
+    .results {
+        padding: 33%;
+        padding-left: 0em;
+        padding-top: 0%;
+        border-radius: 7px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    .card {
+        display: flex;
+        flex-wrap: wrap;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        background-color: wheat;
+        border: none;
+        width: 75%;
+    }
+
+    .city-text-div {
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-start;
+        align-items: center;    
+        padding: 1px;
+        padding-left: 5em;
+        width: 100%;
+    }
+}
+    
 

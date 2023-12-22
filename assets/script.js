@@ -36,8 +36,6 @@ function getWeather(city) {
                 console.log("temp", data.main.temp);
                 console.log("wind speed", data.wind.speed);
                 console.log("humidity", data.main.humidity);
-                // $("#city").text(
-                // `City: ${data.main.name} (${moment().format("M/D/YYYY")})`);
                 $("#city").text(`${data.name}`);
                 $("#date").text(`${moment().format("L")}`);
 
@@ -64,7 +62,8 @@ function getWeather(city) {
                 console.error("Invalid data received from the API");
             }
         })
-}
+};
+
 citySearchEl.addEventListener("click", (event) => {
     event.preventDefault();
     getWeather();
@@ -87,7 +86,7 @@ function generateCard(apiData) {
 
         index += 1
     }
-}
+};
 
 function get5Day(city) {
     city = (city || inputCityEl.value).trim();
@@ -119,7 +118,7 @@ function displaySearchedCities() {
             recentlySearchedCities.splice(i, 1);
         }
     }
-}
+};
 
 recentSearchHistoryEl.on("click", "button", function () {
     console.log($(this).text());
