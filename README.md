@@ -26,7 +26,7 @@ Attached is a screenshot displaying the maximum number of recently searched citi
 
 ## Deployed Site
 
-
+[Deployed Site](https://tyler-kd.github.io/Weather-Wizard/)
 
 ## Credits
 
