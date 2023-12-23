@@ -26,13 +26,13 @@ function getWeather(city) {
     city = (city || inputCityEl.value).trim();
     fetch(
         `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=imperial&appid=${apiKey}`
-    )   
+    )
         // If there is a response, then city is converted to JSON for usable data
         .then(function (res) {
             return res.json();
         })
         // Function for applying data from API to city, date, weather icon, wind speed, and humidity elements
-        .then(function (data) {           
+        .then(function (data) {
             console.log("name", data.name);
             console.log("date", data.dt);
             console.log("icon", data.weather[0].icon);
@@ -41,7 +41,7 @@ function getWeather(city) {
             console.log("humidity", data.main.humidity);
             // If there are data, city name, weather icon, temperature, wind speed, and humidity values, then the function runs
             // Adding !==undefined to paramaters allows for 0 values to be read instead of undefined
-            if (data.name && data.weather[0].icon && data.main.temp !==undefined && data.wind.speed !==undefined && data.main.humidity !==undefined) {
+            if (data.name && data.weather[0].icon && data.main.temp !== undefined && data.wind.speed !== undefined && data.main.humidity !== undefined) {
                 // .text method applies stringed data values to id elements
                 $("#city").text(`${data.name}`);
                 $("#date").text(`${moment().format("L")}`);
@@ -59,10 +59,10 @@ function getWeather(city) {
                 $("#wind").text(`Wind: ${data.wind.speed} mph`);
 
                 // Conditional to prevent duplicates from displaying in Recent Cities list
-                if (!recentlySearchedCities.includes(city.toLowerCase())) {
+                if (!recentlySearchedCities.includes(city)) {
                     recentlySearchedCities.push(city);
                 }
-                count = 0;                
+                count = 0;
                 // Key: "City Name" Value: receentlysearchCities
                 // Strings the recentlySearchedCities array and saves data to local storage
                 localStorage.setItem("City Name", JSON.stringify(recentlySearchedCities));
